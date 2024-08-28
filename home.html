@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Feni Enterprise</title>
+
+    <style>
+      /* Animation for p tag */
+      .slide-in-left {
+        animation: slideInLeft 1s ease-in-out forwards;
+      }
+    
+      /* Animation for h1 tag */
+      .slide-in-right {
+        animation: slideInRight 1s ease-in-out forwards;
+      }
+    
+      @keyframes slideInLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    
+      @keyframes slideInRight {
+        0% {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
+    
+</head>
+<body class="">
+           <!-- Heading Bar -->
+    <div id="home" class="bg-blue-950 text-white py-2 flex justify-center">
+      <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0 sm:space-x-4 font-semibold">
+          <!-- Left Side: Phone, Email, Open/Close Time -->
+          <span class="text-sm"><i class="fas fa-phone-alt"></i> +880 17117 61280</span>
+          <span class="text-sm hover:text-red-600"><i class="fas fa-envelope"></i> <a href="mailto:fenienterprise67@gmail.com">fenienterprise67@gmail.com</a></span>
+          <span class="text-sm"><i class="fas fa-clock"></i> 24/7</span>
+      </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="bg-yellow-200 text-black py-4">
+      <div class="container mx-auto flex flex-wrap items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center flex-shrink-0">
+              <img src="img/logo.png" alt="Logo" width="100" height="auto">
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="block lg:hidden">
+              <button id="menu-button" class="text-blue-950 hover:text-red-600 focus:outline-none">
+                  <i class="fas fa-bars"></i>
+              </button>
+          </div>
+
+          <!-- Navigation Links and Search Icon -->
+          <div id="menu" class="hidden lg:flex lg:items-center lg:space-x-6 font-semibold">
+              <a href="#home" class="text-blue-950 hover:text-red-600 scroll-link">Home</a>
+              <a href="#about" class="text-blue-950 hover:text-red-600 scroll-link">About</a>
+              <a href="#services" class="text-blue-950 hover:text-red-600 scroll-link">Services</a>
+              <a href="#officials" class="text-blue-950 hover:text-red-600 scroll-link">Officials</a>
+              <a href="#testimonials" class="text-blue-950 hover:text-red-600 scroll-link">Testimonials</a>
+              <a href="#contact" class="text-blue-950 hover:text-red-600 scroll-link">Contact</a>
+              <a href="#" class="text-blue-950 hover:text-red-600" id="search-icon">
+                  <i class="fas fa-search"></i>
+              </a>
+          </div>
+      </div>
+  </nav>
+
+ <!-- Mobile Menu -->
+<div id="mobile-menu" class="lg:hidden fixed inset-0 bg-yellow-200 bg-opacity-90 z-50 hidden">
+  <div class="flex flex-col items-center py-8 relative">
+    <!-- Close Button -->
+    <button id="close-menu" class="absolute top-4 right-4 text-blue-950 hover:text-red-600 text-2xl">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <a href="#home" class="text-blue-950 hover:text-red-600 mb-4">Home</a>
+    <a href="#about" class="text-blue-950 hover:text-red-600 mb-4">About</a>
+    <a href="#services" class="text-blue-950 hover:text-red-600 mb-4">Services</a>
+    <a href="#officials" class="text-blue-950 hover:text-red-600 mb-4">Officials</a>
+    <a href="#testimonials" class="text-blue-950 hover:text-red-600 mb-4">Testimonials</a>
+    <a href="#contact" class="text-blue-950 hover:text-red-600 mb-4">Contact</a>
+    
+  </div>
+</div>
+  <!-- Search Dialog Box -->
+<div id="search-dialog" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-1/3 relative">
+      <!-- Close Button -->
+      <button id="close-search" class="absolute top-2 right-2 text-gray-600 hover:text-red-600">
+          <i class="fas fa-times"></i>
+      </button>
+      <!-- Dialog Title -->
+      <h2 class="text-xl font-semibold mb-4">Search here</h2>
+      <!-- Search Input and Button -->
+      <div class="flex items-center mb-4">
+          <input type="text" id="search-input" class="border w-full p-2 rounded" placeholder="Type to search...">
+          <button id="search-btn" class="ml-2 text-blue-600 hover:text-blue-800">
+              <i class="fas fa-search"></i>
+          </button>
+      </div>
+      <!-- Suggestions List -->
+      <ul id="suggestions" class="mb-4">
+          <li class="hover:bg-yellow-100 p-2 rounded"><a href="#home">Home</a></li>
+          <li class="hover:bg-yellow-100 p-2 rounded"><a href="#about">About</a></li>
+          <li class="hover:bg-yellow-100 p-2 rounded"><a href="#services">Services</a></li>
+          <li class="hover:bg-yellow-100 p-2 rounded"><a href="#officials">Officials</a></li>
+          <li class="hover:bg-yellow-100 p-2 rounded"><a href="#testimonials">Testimonials</a></li>
+          <li class="hover:bg-yellow-100 p-2 rounded"><a href="#contact">Contact</a></li>
+      </ul>
+  </div>
+</div>
+
+
+  <!-- Carousel Container -->
+<div class="relative w-full h-screen overflow-hidden mt-6">
+  <!-- Carousel Slides -->
+  <div class="carousel flex transition-transform duration-1000 ease-in-out w-full">
+    <!-- Slide 1 -->
+    <div class="relative w-full min-h-screen flex-none bg-cover bg-center flex items-center justify-center" style="background-image: url('img/cover5.jpg');">
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="relative z-10 text-center px-4 md:px-8">
+        <p class="text-white text-xl md:text-2xl mb-2 slide-in-left">Enlisted <span class="text-4xl md:text-5xl font-bold">1st</span> Class Electrical & Civil Contractor & Supplier of</p>
+        <h1 class="text-white text-3xl md:text-4xl font-bold slide-in-right">Power Development Board & Public Works Department</h1>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="relative w-full min-h-screen flex-none bg-cover bg-center flex items-center justify-center" style="background-image: url('img/cover1.jpg');">
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="relative z-10 text-center px-4 md:px-8">
+        <p class="text-white text-xl md:text-2xl mb-2 slide-in-left">We Are Professionals</p>
+        <h1 class="text-white text-3xl md:text-4xl font-bold slide-in-right">For Your Dream Projects</h1>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="relative w-full min-h-screen flex-none bg-cover bg-center flex items-center justify-center" style="background-image: url('img/cover3.jpg');">
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="relative z-10 text-center px-4 md:px-8">
+        <p class="text-white text-xl md:text-2xl mb-2 slide-in-left">We Are Trusted</p>
+        <h1 class="text-white text-3xl md:text-4xl font-bold slide-in-right">For Your Dream Projects</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="py-16 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="flex items-start space-x-4 p-4 bg-yellow-200 shadow-lg rounded-lg">
+        <div class="flex-shrink-0 text-blue-500 text-3xl">
+          <!-- Replace with your icon, e.g., using FontAwesome or Heroicons -->
+          <i class="fa-solid fa-helmet-safety"></i>
+        </div>
+        <div>
+          <h3 class="text-lg md:text-xl font-semibold mb-1">Expert Workers</h3>
+          <p class="text-gray-600 text-sm md:text-base">Our team consists of highly skilled professionals ready to handle your projects efficiently.</p>
+        </div>
+      </div>
+      <!-- Feature 2 -->
+      <div class="flex items-start space-x-4 p-4 bg-yellow-200 shadow-lg rounded-lg">
+        <div class="flex-shrink-0 text-green-500 text-3xl">
+          <!-- Replace with your icon, e.g., using FontAwesome or Heroicons -->
+          <i class="fa-solid fa-building-user"></i>
+        </div>
+        <div>
+          <h3 class="text-lg md:text-xl font-semibold mb-1">Quality Work</h3>
+          <p class="text-gray-600 text-sm md:text-base">We prioritize high-quality results and ensure that every project meets your standards.</p>
+        </div>
+      </div>
+      <!-- Feature 3 -->
+      <div class="flex items-start space-x-4 p-4 bg-yellow-200 shadow-lg rounded-lg">
+        <div class="flex-shrink-0 text-red-500 text-3xl">
+          <!-- Replace with your icon, e.g., using FontAwesome or Heroicons -->
+          <i class="fas fa-headset"></i>
+        </div>
+        <div>
+          <h3 class="text-lg md:text-xl font-semibold mb-1">24/7 Support</h3>
+          <p class="text-gray-600 text-sm md:text-base">Our support team is available around the clock to assist you with any inquiries or issues.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- About Section -->
+<section id="about" class="py-16 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center">
+      <!-- Image Section -->
+      <div class="md:w-1/3 mb-8 md:mb-0">
+        <img src="img/cover4.jpg" alt="About Us" class="w-full h-auto object-cover rounded-lg shadow-lg">
+      </div>
+      
+      <!-- Text Section -->
+      <div class="md:w-2/3 md:pl-8">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Welcome to <span class="text-2xl md:text-3xl text-indigo-950">Feni</span> <span class="text-2xl md:text-3xl text-red-600">Enterprise</span></h2>
+        <h2 class="text-xl md:text-3xl font-bold mb-4">25+ Years Experience in Construction</h2>
+        <p class="text-gray-700 text-sm md:text-base mb-4">
+          We are a dedicated team of professionals with a deep commitment to delivering high-quality solutions that are precisely tailored to meet your unique needs. Our team is driven by a shared passion for excellence and a strong focus on innovation, ensuring that we not only meet but exceed the expectations of our clients.
+
+          Our mission goes beyond simply providing a service; we aim to create lasting, meaningful relationships with every client we work with. We believe that the foundation of any successful partnership is trust, and we strive to build this trust by consistently delivering results that speak for themselves.
+        </p>
+        <a href="#" class="inline-block px-4 py-2 md:px-6 md:py-3 text-white bg-blue-950 rounded-lg hover:bg-yellow-200 hover:text-black transition duration-300">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="py-16 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-around text-center">
+      <!-- Completed Projects -->
+      <div class="flex-1 p-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-indigo-950 counter" data-count="450">0</h2>
+        <p class="text-gray-700 text-lg md:text-2xl mt-2">Completed Projects</p>
+      </div>
+      <!-- Running Projects -->
+      <div class="flex-1 p-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-red-600 counter" data-count="20">0</h2>
+        <p class="text-gray-700 text-lg md:text-2xl mt-2">Running Projects</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Services -->
+<section id="services" class="py-16 bg-gray-100">
+  <div class="relative text-center">
+    <p class="text-indigo-950 text-2xl font-bold mb-2">Our Services</p>
+    <h1 class="text-red-600 text-3xl md:text-4xl font-bold">We Provide Services</h1>
+  </div>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-center">
+      
+      <!-- Image Box 1 -->
+      <div class="relative w-full sm:w-1/2 md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-60 sm:h-72 md:h-80 lg:h-72">
+          <img src="img/building_cons.jpg" alt="Building Construction" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-sm sm:text-base md:text-lg px-2 sm:px-4">Adherence to building codes and standards is non-negotiable in the construction industry. Feni Enterprise ensures that every project meets or exceeds the required regulations, guaranteeing the safety and reliability of its structures. This commitment also provides clients with peace of mind, knowing that their investments are secure and their buildings are constructed to the highest quality.</p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl">Building Construction</p>
+      </div>
+      
+      <!-- Image Box 2 -->
+      <div class="relative w-full sm:w-1/2 md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-60 sm:h-72 md:h-80 lg:h-72">
+          <img src="img/house_reno.jpg" alt="House Renovation" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-sm sm:text-base md:text-lg px-2 sm:px-4">The success of any house renovation project is rooted in the expertise of the renovators. Feni Enterprise boasts a team of highly skilled professionals who bring precision and a wealth of knowledge to every phase of the renovation process. This ensures that every renovated space is not only aesthetically pleasing but also functional and durable.</p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl">House Renovation</p>
+      </div>
+      
+      <!-- Image Box 3 -->
+      <div class="relative w-full sm:w-1/2 md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-60 sm:h-72 md:h-80 lg:h-72">
+          <img src="img/line_cons.jpg" alt="Line Construction" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-sm sm:text-base md:text-lg px-2 sm:px-4">High-quality line construction skills are the foundation of Feni Enterprise’s success. The company’s unwavering commitment to excellence and client satisfaction ensures that it remains a leader in the line construction industry. For those seeking reliable and top-tier line construction services, Feni Enterprise stands as a symbol of quality and trust, ready to deliver projects that meet the highest standards.</p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl">Line Construction</p>
+      </div>
+
+      <!-- Image Box 4 -->
+      <div class="relative w-full sm:w-1/2 md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-60 sm:h-72 md:h-80 lg:h-72">
+          <img src="img/material.jpg" alt="Materials Supply" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-sm sm:text-base md:text-lg px-2 sm:px-4">In the construction industry, the quality of materials used is critical to the success and durability of any project. For Feni Enterprise, a leading supplier of construction materials, ensuring the highest quality of materials is not just a business strategy—it's a commitment to excellence. This dedication to providing top-tier materials sets Feni Enterprise apart as a trusted partner in the industry.</p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl">Materials Supply</p>
+      </div>
+      
+      <!-- Image Box 5 -->
+      <div class="relative w-full sm:w-1/2 md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-60 sm:h-72 md:h-80 lg:h-72">
+          <img src="img/fixing.jpg" alt="Fixing & Support" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-sm sm:text-base md:text-lg px-2 sm:px-4">In fixing and support work, adherence to quality standards is paramount. Feni Enterprise is dedicated to ensuring that every aspect of its work meets or exceeds industry regulations and guidelines. This rigorous commitment to quality guarantees that all fixing and support work is reliable and secure, providing clients with peace of mind and confidence in the safety of their buildings.</p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl">Fixing & Support</p>
+      </div>
+      
+      <!-- Image Box 6 -->
+      <div class="relative w-full sm:w-1/2 md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-60 sm:h-72 md:h-80 lg:h-72">
+          <img src="img/painting.jpg" alt="Painting" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-sm sm:text-base md:text-lg px-2 sm:px-4">The painting industry is continually evolving, with new materials and technologies improving both the quality and durability of finishes. Feni Enterprise stays ahead of these trends. By using high-quality paints and advanced techniques, Feni Enterprise ensures that every coat not only looks great but also stands up to the test of time.</p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl">Painting</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Proprietor -->
+<section id="officials" class="py-16 bg-gray-100">
+  <div class="relative text-center">
+    <h1 class="text-red-600 text-3xl md:text-4xl font-bold">Proprietor</h1>
+  </div>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-center">
+      
+      <!-- Image Box 1 -->
+      <div class="relative w-full sm:w-1/2 md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-80 sm:h-96 md:h-80 lg:h-96">
+          <img src="img/lokman.jpeg" alt="Building Construction" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-lg px-2 sm:px-4"><a href="#"><i class="fa-brands fa-facebook"></i></a></p>
+            <p class="text-white text-lg px-2 sm:px-4"><a href="#"><i class="fa-brands fa-linkedin"></i></a></p>
+            <p class="text-white text-lg px-2 sm:px-4"><a href="#"><i class="fa-solid fa-envelope"></i></a></p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl font-bold">Lokman Uddin</p>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl">Founder</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Our Team -->
+<section class="py-16 bg-gray-100">
+  <div class="relative text-center mb-8">
+    <h1 class="text-blue-950 text-4xl md:text-5xl font-bold">Our Team</h1>
+  </div>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-center">
+      
+      <!-- Image Box 1 -->
+      <div class="relative w-full md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-80 sm:h-96">
+          <img src="img/ziabul.png" alt="Md. Ziabul Hossain" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-lg px-4"><a href="https://www.facebook.com/engrmd.zia"><i class="fa-brands fa-facebook"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-linkedin"></i></a></p>
+            <p class="text-white text-lg px-4"><a href="mailto:ziabul@example.com"><i class="fa-solid fa-envelope"></i></a></p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl font-bold">Md. Ziabul Hossain</p>
+        <p class="text-center text-gray-700 text-base sm:text-lg">Sr. Project Engineer (Electrical & Civil)</p>
+      </div>
+
+      <!-- Image Box 2 -->
+      <div class="relative w-full md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-80 sm:h-96">
+          <img src="img/hemel.jpg" alt="Hemel Dhar" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-lg px-4"><a href="https://www.facebook.com/hemel.himu2"><i class="fa-brands fa-facebook"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-linkedin"></i></a></p>
+            <p class="text-white text-lg px-4"><a href="mailto:himu_eee@yahoo.com"><i class="fa-solid fa-envelope"></i></a></p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl font-bold">Hemel Dhar</p>
+        <p class="text-center text-gray-700 text-base sm:text-lg">Project Engineer (Electrical & Civil)</p>
+      </div>
+
+      <!-- Image Box 3 -->
+      <div class="relative w-full md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-80 sm:h-96">
+          <img src="img/rustom.png" alt="Md. Rustom Ali" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-facebook"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-linkedin"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-solid fa-envelope"></i></a></p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl font-bold">Md. Rustom Ali</p>
+        <p class="text-center text-gray-700 text-base sm:text-lg">Sr. Supervisor (Electrical)</p>
+      </div>
+
+      <!-- Image Box 4 -->
+      <div class="relative w-full md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-80 sm:h-96">
+          <img src="img/manik.png" alt="Nurer Nobi Manik" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-facebook"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-linkedin"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-solid fa-envelope"></i></a></p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl font-bold">Nurer Nobi Manik</p>
+        <p class="text-center text-gray-700 text-base sm:text-lg">Sr. Supervisor (Civil)</p>
+      </div>
+
+      <!-- Image Box 5 -->
+      <div class="relative w-full md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-80 sm:h-96">
+          <img src="img/kashem.png" alt="Md. Abul Kashem" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-facebook"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-linkedin"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-solid fa-envelope"></i></a></p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl font-bold">Md. Abul Kashem</p>
+        <p class="text-center text-gray-700 text-base sm:text-lg">Sr. Foreman (Civil)</p>
+      </div>
+
+      <!-- Image Box 6 -->
+      <div class="relative w-full md:w-1/3 p-4">
+        <div class="group relative overflow-hidden h-80 sm:h-96">
+          <img src="img/osman.png" alt="Osman Goni" class="w-full h-full object-cover rounded-lg transition duration-500 ease-in-out transform group-hover:scale-105">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center text-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out">
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-facebook"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-brands fa-linkedin"></i></a></p>
+            <p class="text-white text-lg px-4"><a href=""><i class="fa-solid fa-envelope"></i></a></p>
+          </div>
+        </div>
+        <p class="text-center text-gray-700 mt-2 text-lg sm:text-xl font-bold">Osman Goni</p>
+        <p class="text-center text-gray-700 text-base sm:text-lg">Foreman (Electrical)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Testimonial Section -->
+<section id="testimonials" class="py-16 bg-yellow-200">
+  <div class="relative text-center mb-8">
+    <h2 class="text-red-600 text-4xl font-bold">Testimonials</h2>
+  </div>
+  <div class="container mx-auto px-4">
+    <div class="relative overflow-hidden">
+      <!-- Testimonial Slides Container -->
+      <div class="testimonial-carousel flex transition-transform duration-500 ease-in-out">
+        <!-- Testimonial 1 -->
+        <div class="flex-none w-full text-center">
+          <div class="flex justify-center">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white">
+              <img src="img/user.jpg" alt="Client 1" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <p class="text-gray-700 mt-4 px-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu nisi quis erat suscipit posuere."</p>
+          <p class="text-blue-950 mt-2">- Client 1</p>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="flex-none w-full text-center">
+          <div class="flex justify-center">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white">
+              <img src="img/user.jpg" alt="Client 2" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <p class="text-gray-700 mt-4 px-4">"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."</p>
+          <p class="text-blue-950 mt-2">- Client 2</p>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="flex-none w-full text-center">
+          <div class="flex justify-center">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white">
+              <img src="img/user.jpg" alt="Client 3" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <p class="text-gray-700 mt-4 px-4">"Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan."</p>
+          <p class="text-blue-950 mt-2">- Client 3</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer id="contact" class="bg-gray-900 text-white py-10 mt-14">
+  <div class="container mx-auto px-4 flex flex-wrap justify-between gap-6">
+    
+    <!-- Office Contact Div -->
+    <div class="w-full md:w-1/3 mb-6 md:mb-0">
+      <h3 class="text-lg md:text-xl font-bold mb-4">Office Contact</h3>
+      <p class="mb-2 text-sm md:text-base"><i class="fa-solid fa-location-dot"></i> House-16, Lane-11, Road-1, Block-I,<br>Halishahar H/E, Chattogram.</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10437.907543292222!2d91.77823497924871!3d22.34012234062978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd93ac9d59423%3A0xacccd083fee9504d!2sHalishahar%20Housing%20Estate%2C%20Chattogram!5e0!3m2!1sen!2sbd!4v1724780102638!5m2!1sen!2sbd" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p class="mt-2 mb-2 text-sm md:text-base"><i class="fas fa-phone-alt"></i> +880 17117 61280</p>
+      <p class="mb-2 text-sm md:text-base hover:text-red-600"><i class="fas fa-envelope"></i> <a href="mailto:fenienterprise67@gmail.com">fenienterprise67@gmail.com</a></p>
+    </div>
+
+    <!-- Useful Pages Div -->
+    <div class="w-full md:w-1/3 mb-6 md:mb-0">
+      <h3 class="text-lg md:text-xl font-bold mb-4">Useful Pages</h3>
+      <ul class="text-sm md:text-base">
+        <li class="mb-2"><a href="#home" class="text-blue-400 hover:text-red-600 scroll-link">Home</a></li>
+        <li class="mb-2"><a href="#about" class="text-blue-400 hover:text-red-600 scroll-link">About Us</a></li>
+        <li class="mb-2"><a href="#services" class="text-blue-400 hover:text-red-600 scroll-link">Services</a></li>
+        <li class="mb-2"><a href="#officials" class="text-blue-400 hover:text-red-600 scroll-link">Officials</a></li>
+        <li class="mb-2"><a href="#testimonials" class="text-blue-400 hover:text-red-600 scroll-link">Testimonials</a></li>
+        <li class="mb-2"><a href="#contact" class="text-blue-400 hover:text-red-600 scroll-link">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Form Div -->
+    <div class="w-full md:w-1/3">
+      <h3 class="text-lg md:text-xl font-bold mb-4">Contact Us</h3>
+      <p class="text-gray-400 text-sm md:text-base">We're always eager to hear from you.<br><span class="font-bold"> Get in touch today!</span></p>
+      <a href="mailto:fenienterprise67@gmail.com" class="mt-4 inline-block px-4 py-2 text-white bg-blue-400 rounded-lg hover:bg-yellow-200 hover:text-black transition duration-300 text-sm md:text-base">Email Us</a>
+    </div>
+  </div>
+
+  <!-- Copyright and Designed By Line -->
+  <div class="container mx-auto px-4 mt-6 border-t border-gray-700 pt-4 text-sm md:text-base">
+    <div class="flex flex-wrap justify-between items-center">
+      <p class="text-gray-400">&copy; 2024 <span class="text-red-600 font-semibold">Feni Enterprise,</span> All rights reserved.</p>
+      <p class="text-gray-400">Designed and developed by <a href="mailto:tomal.dhar.bgc@gmail.com?subject=Interested%20in%20Hiring&body=Hello%20Tomal,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you.%0D%0A%0D%0ABest%20regards," class="text-blue-400 hover:text-red-600 font-semibold">Tomal Dhar</a></p>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+  // Mobile menu toggle
+  document.getElementById('menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+  });
+</script>
+
+<!-- JavaScript to Toggle Menu -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Open menu button
+    const openMenuButton = document.getElementById('open-menu'); // Assuming you have an open menu button with id "open-menu"
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuButton = document.getElementById('close-menu');
+
+    if (openMenuButton) {
+      openMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.remove('hidden');
+      });
+    }
+
+    if (closeMenuButton) {
+      closeMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+      });
+    }
+  });
+</script>
+
+<script>
+  // Toggle Search Dialog Box
+  const searchIcon = document.getElementById('search-icon');
+  const searchDialog = document.getElementById('search-dialog');
+  const closeSearch = document.getElementById('close-search');
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-btn');
+
+  searchIcon.addEventListener('click', () => {
+      searchDialog.classList.remove('hidden');
+  });
+
+  closeSearch.addEventListener('click', () => {
+      searchDialog.classList.add('hidden');
+  });
+
+  // Handle Search Functionality
+  searchButton.addEventListener('click', () => {
+      const query = searchInput.value.toLowerCase();
+      const suggestions = document.querySelectorAll('#suggestions li a');
+
+      let found = false;
+      suggestions.forEach(suggestion => {
+          const text = suggestion.textContent.toLowerCase();
+          if (text.includes(query)) {
+              window.location.href = suggestion.getAttribute('href');
+              found = true;
+          }
+      });
+
+      if (!found) {
+          alert('No matching navigation found');
+      }
+
+      searchDialog.classList.add('hidden');
+  });
+</script>
+
+<script>
+  const carousel = document.querySelector('.carousel');
+  const slides = document.querySelectorAll('.carousel > div');
+  let index = 0;
+
+  function showNextSlide() {
+    // Remove animation classes from current slide
+    slides[index].querySelector('p').classList.remove('slide-in-left');
+    slides[index].querySelector('h1').classList.remove('slide-in-right');
+
+    // Update the index
+    index = (index + 1) % slides.length;
+
+    // Move to the next slide
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+
+    // Add animation classes to the new slide
+    slides[index].querySelector('p').classList.add('slide-in-left');
+    slides[index].querySelector('h1').classList.add('slide-in-right');
+  }
+
+  // Initial animation setup
+  slides[index].querySelector('p').classList.add('slide-in-left');
+  slides[index].querySelector('h1').classList.add('slide-in-right');
+
+  setInterval(showNextSlide, 3000);
+</script>
+<script>
+  //Counter-up animation
+  document.addEventListener('DOMContentLoaded', () => {
+  const counters = document.querySelectorAll('.counter');
+
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-count');
+      const count = +counter.innerText;
+
+      const speed = 200; // Speed of counting
+      const increment = target / speed;
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 10);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    updateCount();
+  });
+});
+</script>
+
+<!-- Script for Sliding Testimonials -->
+<script>
+  const testimonialCarousel = document.querySelector('.testimonial-carousel');
+  let testimonialIndex = 0;
+
+  function showNextTestimonial() {
+    testimonialIndex = (testimonialIndex + 1) % 3;
+    testimonialCarousel.style.transform = `translateX(-${testimonialIndex * 100}%)`;
+  }
+
+  setInterval(showNextTestimonial, 3000);
+</script>
+</body>
+</html>
